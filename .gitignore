@@ -5,3 +5,10 @@ __pycache__/
 *.dylib
 *.so
 .streamlit/
+
+.env
+*.o
+*.a
+build/
+dist/
+.vscode/
