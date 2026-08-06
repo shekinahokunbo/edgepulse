@@ -10,8 +10,8 @@ a temperature probe, a server metric, or a market feed. The hosted demo plugs in
 **live cryptocurrency prices** (Coinbase public API, no key) so it works in real
 time out of the box.
 
-### ▶️ Live demo
-_Deploying on Streamlit Community Cloud — see [Deploy](#deploy) below._
+### ▶️ **[Live demo](https://edgepulse-cfrfy9viwrhandeg5ztqdk.streamlit.app)**
+Streaming live data with real-time forecasts and anomaly alerts.
 
 ---
 
