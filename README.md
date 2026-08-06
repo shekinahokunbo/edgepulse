@@ -43,6 +43,19 @@ _Deploying on Streamlit Community Cloud — see [Deploy](#deploy) below._
 4. **Score** the prediction error against recent errors (robust z-score).
 5. **Alert** when the score crosses a sensitivity threshold.
 
+## Performance
+
+The C++ core is benchmarked against the Python fallback in
+[`scripts/benchmark.py`](scripts/benchmark.py) (200k calls, 60-point window):
+
+| Engine | Latency | Throughput |
+|---|---|---|
+| **C++ (ctypes)** | **~2.0 µs/prediction** | **~508K predictions/sec** |
+| Python fallback | ~2.9 µs/prediction | ~339K predictions/sec |
+
+Reproduce with `python scripts/benchmark.py` (absolute numbers are
+machine-dependent). Both engines are asserted to agree numerically.
+
 ## Repo structure
 
 ```
@@ -56,6 +69,7 @@ edgepulse/
   dashboard/app.py          real-time Streamlit console (the demo)
   api/main.py               FastAPI ingestion service (distributed/edge path)
 cpp/predictor.{cpp,h}       C++ forecasting core
+scripts/benchmark.py         C++ vs Python latency/throughput benchmark
 scripts/simulate_sensors.py synthetic sensor generator (for the API path)
 Makefile                    builds the C++ shared library
 packages.txt                apt build tools for cloud (compiles C++ on deploy)
