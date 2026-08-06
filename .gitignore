@@ -4,7 +4,7 @@ __pycache__/
 .DS_Store
 *.dylib
 *.so
-.streamlit/
+.streamlit/secrets.toml
 
 .env
 *.o

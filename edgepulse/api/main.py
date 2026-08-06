@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from edgepulse.core.ringbuffer import RingBuffer
-from edgepulse.core.predictor import CppPredictor
+from edgepulse.core.predictor import get_predictor
 from edgepulse.core.anomaly import is_anomaly
 
 app = FastAPI(title="EdgePulse API")
@@ -11,7 +11,7 @@ app = FastAPI(title="EdgePulse API")
 WINDOW = 60
 ERROR_WIN = 200
 
-predictor = CppPredictor(alpha=0.35)
+predictor, _engine = get_predictor(alpha=0.35)  # C++ if available, else Python
 
 buffers = {}
 err_buffers = {}
